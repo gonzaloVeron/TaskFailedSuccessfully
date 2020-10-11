@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tile076.png-63d7bea3424329799714eb5eab10fa5b.stex"
+path="res://.import/tile076.png-d1ee422ee36af9dcfebb9b1114a244e5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets_minion_3/tile076.png"
-dest_files=[ "res://.import/tile076.png-63d7bea3424329799714eb5eab10fa5b.stex" ]
+source_file="res://obstacles/spikes/spike trap/assets/tile076.png"
+dest_files=[ "res://.import/tile076.png-d1ee422ee36af9dcfebb9b1114a244e5.stex" ]
 
 [params]
 

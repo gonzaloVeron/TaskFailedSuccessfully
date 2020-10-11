@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://obstacles/guns/laser gun/RigidBody2D.gd" type="Script" id=1]
+[ext_resource path="res://ForDemoPurposes/RigidBody2D.gd" type="Script" id=1]
 [ext_resource path="res://ForDemoPurposes/tile514.png" type="Texture" id=2]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9.09647, 13.409 )
