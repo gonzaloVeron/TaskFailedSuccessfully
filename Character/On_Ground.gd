@@ -1,4 +1,4 @@
-extends "res://Motion.gd"
+extends "res://Character/Motion.gd"
 
 # warning-ignore-all:unused_class_variable
 var speed = 0.0

@@ -23,13 +23,11 @@ func _ready():
 		child.connect("finished", self, "_change_state")
 	initialize(start_state)
 
-
 func initialize(initial_state):
 	set_active(true)
 	states_stack.push_front(get_node(initial_state))
 	current_state = states_stack[0]
 	current_state.enter()
-
 
 func set_active(value):
 	_active = value

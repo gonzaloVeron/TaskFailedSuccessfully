@@ -1,4 +1,4 @@
-extends "res://Motion.gd"
+extends "res://Character/Motion.gd"
 
 export(float) var base_max_horizontal_speed = 400.0
 
@@ -36,7 +36,7 @@ func update(delta):
 	update_look_direction(input_direction)
 
 	move_horizontally(delta, input_direction)
-	animate_jump_height(delta)
+	#animate_jump_height(delta)
 	if height <= 0.0:
 		emit_signal("finished", "previous")
 

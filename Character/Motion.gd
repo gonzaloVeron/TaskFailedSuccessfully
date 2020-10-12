@@ -1,4 +1,4 @@
-extends "res://state.gd"
+extends "res://Character/State.gd"
 
 func handle_input(event):
 	if event.is_action_pressed("simulate_damage"):
@@ -11,5 +11,6 @@ func get_input_direction():
 	return input_direction
 
 func update_look_direction(direction):
-	if direction and owner.look_direction != direction:
-		owner.look_direction = direction
+#	if direction and owner.look_direction != direction:
+#		owner.look_direction = direction
+	pass

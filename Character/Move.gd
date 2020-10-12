@@ -1,4 +1,4 @@
-extends "res://On_Ground.gd"
+extends "res://Character/On_Ground.gd"
 
 export(float) var max_walk_speed = 450
 export(float) var max_run_speed = 700
@@ -11,10 +11,8 @@ func enter():
 	update_look_direction(input_direction)
 	#owner.get_node("AnimationPlayer").play("walk")
 
-
 func handle_input(event):
 	return .handle_input(event)
-
 
 func update(_delta):
 	var input_direction = get_input_direction()
@@ -28,7 +26,6 @@ func update(_delta):
 		return
 	if speed == max_run_speed and collision_info.collider.is_in_group("environment"):
 		return null
-
 
 func move(speed, direction):
 	velocity = direction.normalized() * speed

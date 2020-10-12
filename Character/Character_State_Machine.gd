@@ -1,11 +1,17 @@
-extends "res://State_Machine.gd"
+extends "res://Character/State_Machine.gd"
 
 func _ready():
+	owner = get_parent()
 	states_map = {
 		"idle": $Idle,
 		"move": $Move,
 		"jump": $Jump,
 	}
+	$Move.owner = owner
+	$Idle.owner = owner
+	$Jump.owner = owner
+	
+	
 
 func _change_state(state_name):
 	# The base state_machine interface this node extends does most of the work.
