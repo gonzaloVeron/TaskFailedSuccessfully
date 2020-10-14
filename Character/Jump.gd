@@ -35,6 +35,7 @@ func update(delta):
 	move_horizontally(delta, input_direction)
 	animate_jump_height(delta)
 	if height <= 0.0:
+		#print(horizontal_velocity)
 		emit_signal("finished", "previous")
 
 func move_horizontally(delta, direction):
@@ -57,3 +58,6 @@ func animate_jump_height(delta):
 	
 	owner.get_node("BodyPivot").position.y = -height
 	coll.position.y = -height
+
+func isOnFloor():
+	return owner.is_on_floor()
