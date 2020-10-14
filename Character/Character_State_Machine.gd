@@ -14,6 +14,7 @@ func _ready():
 	
 
 func _change_state(state_name):
+	print(state_name)
 	# The base state_machine interface this node extends does most of the work.
 	if not _active:
 		return

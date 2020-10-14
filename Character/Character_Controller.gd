@@ -7,6 +7,10 @@ signal direction_changed(new_direction)
 
 var look_direction = Vector2.RIGHT setget set_look_direction
 
+func _ready():
+	$Character_State_Machine/Jump.coll = $CollisionShape2D
+	$Character_State_Machine/Move.coll = $CollisionShape2D
+
 func take_damage(attacker, amount, effect = null):
 	if is_a_parent_of(attacker):
 		return
