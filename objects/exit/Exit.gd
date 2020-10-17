@@ -4,13 +4,14 @@ extends Area2D
 export var next_scene : PackedScene
 
 onready var anim_player : AnimationPlayer = $AnimationPlayer
+onready var animatedSprite : AnimatedSprite = $AnimatedSprite
 
 #func set_next_level_scene_path (scene_path):
 #	next_level_scene_path = scene_path
 
 func _ready():
 	#$AnimationPlayer.play("default")
-	anim_player.play("default")
+	animatedSprite.play("default")
 	pass 
 
 func teleport():

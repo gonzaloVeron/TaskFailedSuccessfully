@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Character/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://objects/exit/Exit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://objects/hook/Hook.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ForDemoPurposes/BasicTileMap.tscn" type="PackedScene" id=4]
+
+[node name="CharacterDEMO" type="Node2D"]
+
+[node name="Exit" parent="." instance=ExtResource( 2 )]
+position = Vector2( 156.49, 499.698 )
+
+[node name="Hook" parent="." instance=ExtResource( 3 )]
+position = Vector2( 515.825, 313.929 )
+
+[node name="BasicTileMap" parent="." instance=ExtResource( 4 )]
+tile_data = PoolIntArray( 196607, 1, 0, 131083, 1, 0, 262143, 1, 0, 196619, 1, 0, 327679, 1, 0, 262155, 1, 0, 393215, 1, 0, 327691, 1, 0, 458751, 1, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 1, 0 )
+
+[node name="Character" parent="." instance=ExtResource( 1 )]
+position = Vector2( 872.914, 518.826 )
