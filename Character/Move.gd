@@ -4,10 +4,12 @@ export(float) var max_walk_speed = 450
 export(float) var max_run_speed = 700
 var gravity = 30000.0
 var coll:CollisionShape2D
+var animated
 
 func enter():
 	speed = 0.0
 	velocity = Vector2()
+	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite")
 
 	var input_direction = get_input_direction()
 
@@ -28,6 +30,15 @@ func update(_delta):
 	velocity.y += gravity * _delta
 
 	velocity = owner.move_and_slide(velocity, Vector2(0, -1), 5, 2)
+	
+	
+	if input_direction.x > 0:
+		animated.play("walk")
+		animated.flip_h = false
+	if input_direction.x < 0:
+		animated.flip_h = true
+		animated.play("walk")
+	
 
 func isOnFloor():
 	return owner.is_on_floor()

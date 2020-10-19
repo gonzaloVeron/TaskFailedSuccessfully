@@ -18,6 +18,8 @@ var horizontal_velocity = Vector2()
 var vertical_speed = 0.0
 var height = 0.0
 
+var animated
+
 func initialize(speed, velocity):
 	horizontal_speed = speed
 	max_horizontal_speed = speed if speed > 0.0 else base_max_horizontal_speed
@@ -28,6 +30,8 @@ func enter():
 
 	horizontal_velocity = enter_velocity if input_direction else Vector2()
 	vertical_speed = 600.0
+	
+	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite")
 
 func update(delta):
 	var input_direction = get_input_direction()
@@ -37,6 +41,9 @@ func update(delta):
 	if height <= 0.0:
 		#print(horizontal_velocity)
 		emit_signal("finished", "previous")
+	
+	animated.play("jump")
+	#animated.flip_h = false
 
 func move_horizontally(delta, direction):
 	if direction:
