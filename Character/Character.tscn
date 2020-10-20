@@ -42,7 +42,9 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[node name="Character" type="KinematicBody2D"]
+[node name="Character" type="KinematicBody2D" groups=[
+"player",
+]]
 position = Vector2( 488.763, 91.815 )
 script = ExtResource( 1 )
 
@@ -82,7 +84,9 @@ cast_to = Vector2( 0, 1500 )
 collide_with_areas = true
 script = ExtResource( 18 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=[
+"player",
+]]
 current = true
 
 [node name="Line2DAim" type="Line2D" parent="."]

@@ -10,7 +10,6 @@ height = 39.0
 [sub_resource type="Animation" id=2]
 resource_name = "default"
 length = 0.001
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
 tracks/0/interp = 1
@@ -136,6 +135,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.3, 0.2 )
 frames = SubResource( 8 )
-frame = 2
+frame = 1
 playing = true
 [connection signal="body_entered" from="." to="." method="_on_Exit_body_entered"]

@@ -53,3 +53,8 @@ func shoot_lighting():
 		self.set_global_position(raycast2d.get_collider().get_global_position())
 		self.move_and_slide(attraction_speed * 15000)	
 	pass
+
+func die():
+	var pos = self.position
+	$Camera2D.clear_current()
+	queue_free()
