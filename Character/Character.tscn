@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Character/Character_Controller.gd" type="Script" id=1]
 [ext_resource path="res://Character/Idle.gd" type="Script" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://Character/assets/tile517.png" type="Texture" id=15]
 [ext_resource path="res://Character/assets/tile512.png" type="Texture" id=16]
 [ext_resource path="res://Character/assets/tile516.png" type="Texture" id=17]
+[ext_resource path="res://Character/RayCast2D.gd" type="Script" id=18]
+[ext_resource path="res://Character/Lighting.gd" type="Script" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32.4333, 32.0529 )
@@ -61,6 +63,9 @@ script = ExtResource( 6 )
 [node name="Jump" type="Node" parent="Character_State_Machine"]
 script = ExtResource( 4 )
 
+[node name="Lighting" type="Node" parent="Character_State_Machine"]
+script = ExtResource( 19 )
+
 [node name="BodyPivot" type="Position2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -69,3 +74,17 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="BodyPivot"]
 frames = SubResource( 2 )
 animation = "jump"
+
+[node name="RayCast2DLighting" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 0, 1500 )
+collide_with_areas = true
+script = ExtResource( 18 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Line2DAim" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 6.0
+default_color = Color( 0.4, 0.501961, 1, 0.560784 )

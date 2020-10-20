@@ -64,11 +64,13 @@ func shoot_lighting():
 		print("gancho:")
 		print(raycast2d.get_collider().position)
 		## implementacion feeeeea.
-		self.move_and_slide(attraction_speed2 * 15000)
+		self.move_and_slide(attraction_speed2 * 15000)	
 		
 		print("personaje:")
 		print(body.position)
 	pass
+	
+
 	
 #func apply_movement(acceleration):
 #   var movement = Vector2.ZERO

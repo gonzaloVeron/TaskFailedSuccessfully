@@ -1,16 +1,22 @@
-extends Node
+extends "res://Character/State.gd"
 
+# warning-ignore:unused_signal
+#signal finished(next_state_name)
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+# Initialize the state. E.g. change the animation.
+func enter():
+	pass
 
+# Clean up the state. Reinitialize values like a timer.
+func exit():
+	pass
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func handle_input(_event):
+	pass
 
+func update(_delta):
+	print("como se llama al update??")
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_animation_finished(_anim_name):
+	pass
