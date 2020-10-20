@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Laser"
-run/main_scene="res://Character/character with lighting ability demo/CharacterDEMO.tscn"
+run/main_scene="res://Character/DEMO/CharacterDEMO.tscn"
 config/icon="res://icon.png"
 
 [input]
