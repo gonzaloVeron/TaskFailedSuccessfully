@@ -21,9 +21,6 @@
 [ext_resource path="res://Character/Lighting.gd" type="Script" id=19]
 [ext_resource path="res://UI/Cursor.tscn" type="PackedScene" id=20]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.4333, 32.0529 )
-
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ) ],
@@ -42,17 +39,14 @@ animations = [ {
 "speed": 10.0
 } ]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8.987, 14.315 )
+
 [node name="Character" type="KinematicBody2D" groups=[
 "player",
 ]]
 position = Vector2( 488.763, 91.815 )
 script = ExtResource( 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Character_State_Machine" type="Node" parent="."]
 script = ExtResource( 3 )
@@ -95,3 +89,7 @@ width = 6.0
 default_color = Color( 0.4, 0.501961, 1, 0.560784 )
 
 [node name="Cursor" parent="." instance=ExtResource( 20 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, 2 )
+shape = SubResource( 1 )
