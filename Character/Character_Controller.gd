@@ -17,19 +17,12 @@ func _ready():
 	$Character_State_Machine/Move.coll = $CollisionShape2D
 	default_aim_color = aim.get_default_color()
 	
-	
 
 func _process(delta):
 	
 	raycast2d.global_position = body.get_global_position()
 	aim.points[0] = body.position
-	#if raycast2d.is_colliding():
-	#	aim.points[1] = raycast2d.get_collision_point()
-	#else:
-#		aim.points[1] = get_global_mouse_position()
-
-
-#line2d.points[1] = transform.xform_inv(raycast2d.get_collision_point())
+	
 func _physics_process(delta):
 	if raycast2d.is_colliding():
 		aim.set_point_position(1, transform.xform_inv(raycast2d.get_collision_point()))
@@ -54,32 +47,9 @@ func set_look_direction(value):
 	emit_signal("direction_changed", value)
 
 func shoot_lighting():
-	# velocity = (target - position).normalized() * speed
-	
 	#animacion aca (?
 	if raycast2d.is_colliding() and raycast2d.get_collider().is_in_group("hook"): 
-		var attraction_speed = (raycast2d.get_collider().position - body.position).normalized()
-		var attraction_speed2 = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
-		
-		print("gancho:")
-		print(raycast2d.get_collider().position)
-		## implementacion feeeeea.
-		self.move_and_slide(attraction_speed2 * 15000)	
-		
-		print("personaje:")
-		print(body.position)
+		var attraction_speed = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
+		self.set_global_position(raycast2d.get_collider().get_global_position())
+		self.move_and_slide(attraction_speed * 15000)	
 	pass
-	
-
-	
-#func apply_movement(acceleration):
-#   var movement = Vector2.ZERO
-#	movement += acceleration
-#	movement = movement.clamped(max_speed)
-			
-#func do_dash(delta):
-#	dashing = true
-#	var normalized_direction = (get_global_mouse_position() - position).normalized()
-#	if (position.distance_to(get_global_mouse_position())> 10): 
-#		apply_movement(normalized_direction * acceleration * delta) 
-#		movement = move_and_slide(movement * 3)
