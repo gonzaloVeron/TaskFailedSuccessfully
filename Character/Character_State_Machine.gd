@@ -6,10 +6,12 @@ func _ready():
 		"idle": $Idle,
 		"move": $Move,
 		"jump": $Jump,
+		"lighting": $Lighting
 	}
 	$Move.owner = owner
 	$Idle.owner = owner
 	$Jump.owner = owner
+	$Lighting.owner = owner
 	
 	
 
@@ -28,9 +30,12 @@ func _change_state(state_name):
 func _unhandled_input(event):
 	# Here we only handle input that can interrupt states, attacking in this case,
 	# otherwise we let the state node handle it.
-	if event.is_action_pressed("attack"):
-		if current_state in [$Attack, $Stagger]:
-			return
-		_change_state("attack")
-		return
+#	if event.is_action_pressed("attack"):
+#		if current_state in [$Attack, $Stagger]:
+#			return
+#		_change_state("attack")
+#		return
+	## el lighting deberia interrumpir estaudos
+	if Input.is_action_just_pressed("lighting"):
+		current_state.owner.shoot_lighting()
 	current_state.handle_input(event)
