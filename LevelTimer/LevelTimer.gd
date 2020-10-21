@@ -2,7 +2,9 @@ extends Node2D
 
 signal timerChange(val)
 
-var value = 60
+signal timeOut()
+
+export var value = 60
 
 func _ready():
 	emit_signal("timerChange", value)
@@ -10,6 +12,9 @@ func _ready():
 func _process(delta):
 	value -= delta
 	emit_signal("timerChange", _roundToInt(value))
+	if(value < 0):
+		emit_signal("timeOut")
+		queue_free()
 
 # --------------------------------------------------- #
 
