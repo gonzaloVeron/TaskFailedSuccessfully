@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Character/Character_Controller.gd" type="Script" id=1]
 [ext_resource path="res://Character/Idle.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Character/RayCast2D.gd" type="Script" id=18]
 [ext_resource path="res://Character/Lighting.gd" type="Script" id=19]
 [ext_resource path="res://UI/Cursor.tscn" type="PackedScene" id=20]
+[ext_resource path="res://LevelTimer/LevelTimer.tscn" type="PackedScene" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -98,3 +99,8 @@ shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="LevelTimer" parent="." instance=ExtResource( 21 )]
+position = Vector2( -13.983, -207.664 )
+value = 10
+[connection signal="timeOut" from="LevelTimer" to="." method="_on_LevelTimer_timeOut"]
