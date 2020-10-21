@@ -42,7 +42,7 @@ func update(delta):
 	jump_height(delta)
 
 	animated.play("jump")
-	animated.flip_h = false
+	#animated.flip_h = false
 	
 	print(owner.is_on_wall())
 	if owner.is_on_wall():

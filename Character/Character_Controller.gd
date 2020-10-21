@@ -55,18 +55,16 @@ func shoot_lighting():
 	if raycast2d.is_colliding() and raycast2d.get_collider().is_in_group("hook"): 
 		var attraction_speed = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
 		var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
-		#print(attraction_direction)
-		#self.set_global_position(raycast2d.get_collider().get_global_position())
+		self.set_global_position(raycast2d.get_collider().get_global_position())
 		self.move_and_slide(attraction_speed * 15000)
 	if raycast2d.is_colliding() and raycast2d.get_collider().is_in_group("switch"): 
 		raycast2d.get_collider().activate()
 	pass
 
 func die():
-	var pos = self.position
 	$Camera2D.clear_current()
-	emit_signal("die", pos)
+	emit_signal("die", self.position)
 	queue_free()
-	
-	
-	queue_free()
+
+func _on_LevelTimer_timeOut():
+	die()
