@@ -93,7 +93,5 @@ position = Vector2( -1688, 168 )
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource( 8 )
-
-[node name="SpawnPoint" type="Position2D" parent="GameManager"]
-position = Vector2( -3713.68, 117.137 )
+spawnPoint = Vector2( -3713.68, 117.137 )
 [connection signal="die" from="Character" to="GameManager" method="_on_Character_die"]

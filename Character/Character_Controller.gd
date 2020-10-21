@@ -10,7 +10,7 @@ var default_aim_color = null
 
 signal direction_changed(new_direction)
 
-signal die(cameraDir)
+signal die(pos)
 
 var look_direction = Vector2.RIGHT setget set_look_direction
 
@@ -67,6 +67,6 @@ func die():
 	$Camera2D.clear_current()
 	emit_signal("die", pos)
 	queue_free()
-
-func _on_LevelTimer_timeOut():
-	die()
+	
+	
+	queue_free()
