@@ -18,6 +18,8 @@ var horizontal_velocity = Vector2()
 var vertical_speed = 0.0
 var height = 0.0
 
+var velocity:Vector2
+
 var animated
 
 func initialize(speed, velocity):
@@ -37,13 +39,15 @@ func update(delta):
 	var input_direction = get_input_direction()
 
 	move_horizontally(delta, input_direction)
-	animate_jump_height(delta)
-	if height <= 0.0:
-		#print(horizontal_velocity)
-		emit_signal("finished", "previous")
-	
+	jump_height(delta)
+
 	animated.play("jump")
-	#animated.flip_h = false
+	animated.flip_h = false
+	
+	print(owner.is_on_wall())
+	if owner.is_on_wall():
+		emit_signal("finished", "previous")
+
 
 func move_horizontally(delta, direction):
 	if direction:
@@ -58,13 +62,11 @@ func move_horizontally(delta, direction):
 
 	owner.move_and_slide(horizontal_velocity)
 
-func animate_jump_height(delta):
+func jump_height(delta):
 	vertical_speed -= gravity * delta
-	height += vertical_speed * delta
-	height = max(0.0, height)
 	
-	owner.get_node("BodyPivot").position.y = -height
-	coll.position.y = -height
-
-func isOnFloor():
-	return owner.is_on_floor()
+	#parche para evitar que caiga rapido
+	velocity = Vector2(0, min(500, vertical_speed * -1))
+		
+	owner.move_and_slide(velocity)
+	
