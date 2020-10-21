@@ -90,6 +90,11 @@ default_color = Color( 0.4, 0.501961, 1, 0.560784 )
 
 [node name="Cursor" parent="." instance=ExtResource( 20 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
+"player",
+]]
 position = Vector2( -1, 2 )
 shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}

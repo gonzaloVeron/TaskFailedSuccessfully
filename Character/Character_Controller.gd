@@ -55,6 +55,7 @@ func shoot_lighting():
 	pass
 
 func die():
+	print("se deberia de activar")
 	var pos = self.position
 	$Camera2D.clear_current()
 	queue_free()
