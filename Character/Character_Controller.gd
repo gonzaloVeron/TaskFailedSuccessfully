@@ -28,6 +28,8 @@ func _physics_process(delta):
 		aim.set_point_position(1, transform.xform_inv(raycast2d.get_collision_point()))
 		if raycast2d.get_collider().is_in_group("hook"):
 			aim.set_default_color(ColorN("darkturquoise",1))
+		if raycast2d.get_collider().is_in_group("switch"):
+			aim.set_default_color(ColorN("red",1))
 		else:
 			aim.set_default_color(default_aim_color)
 		
@@ -52,6 +54,8 @@ func shoot_lighting():
 		var attraction_speed = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
 		self.set_global_position(raycast2d.get_collider().get_global_position())
 		self.move_and_slide(attraction_speed * 15000)	
+	if raycast2d.is_colliding() and raycast2d.get_collider().is_in_group("switch"): 
+		raycast2d.get_collider().activate()
 	pass
 
 func die():
