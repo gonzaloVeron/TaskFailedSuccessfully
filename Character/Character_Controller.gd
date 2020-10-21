@@ -10,6 +10,8 @@ var default_aim_color = null
 
 signal direction_changed(new_direction)
 
+signal die(cameraDir)
+
 var look_direction = Vector2.RIGHT setget set_look_direction
 
 func _ready():
@@ -61,7 +63,10 @@ func shoot_lighting():
 	pass
 
 func die():
-	print("se deberia de activar")
 	var pos = self.position
 	$Camera2D.clear_current()
+	emit_signal("die", pos)
 	queue_free()
+
+func _on_LevelTimer_timeOut():
+	die()
