@@ -8,11 +8,9 @@ func _ready():
 		"jump": $Jump,
 		"lighting": $Lighting
 	}
-	$Move.owner = owner
-	$Idle.owner = owner
-	$Jump.owner = owner
-	$Lighting.owner = owner
 	
+	for state in states_map.values():
+		state.owner = owner
 	
 
 func _change_state(state_name):
@@ -20,7 +18,8 @@ func _change_state(state_name):
 	# The base state_machine interface this node extends does most of the work.
 	if not _active:
 		return
-	if state_name in ["stagger", "jump", "attack"]:
+	#if state_name in ["stagger", "jump", "attack"]:
+	if state_name == "jump":
 		states_stack.push_front(states_map[state_name])
 	if state_name == "jump" and current_state == $Move:
 		$Jump.initialize($Move.speed, $Move.velocity)

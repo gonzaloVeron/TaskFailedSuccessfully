@@ -1,6 +1,6 @@
 extends "res://Character/On_Ground.gd"
 
-export(float) var gravity = 1600.0
+export(float) var gravity = 800.0
 var animated
 
 func enter():
@@ -14,7 +14,13 @@ func update(_delta):
 	if input_direction:
 		emit_signal("finished", "move")
 	
+	
+	#height = max(0.0, height)
 	velocity.y += gravity * _delta
+	
+	#parche para evitar que caiga rapido
+	velocity.y = min(500.0, velocity.y * gravity * _delta)
+
 	velocity = owner.move_and_slide(velocity, Vector2(0, -1), 5, 2)
 	
 	animated.play("idle")

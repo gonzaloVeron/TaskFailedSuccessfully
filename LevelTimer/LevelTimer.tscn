@@ -3,7 +3,6 @@
 [ext_resource path="res://LevelTimer/TimerLabel.gd" type="Script" id=1]
 [ext_resource path="res://LevelTimer/LevelTimer.gd" type="Script" id=2]
 
-
 [node name="LevelTimer" type="Node2D"]
 position = Vector2( 444.024, 110.66 )
 script = ExtResource( 2 )
