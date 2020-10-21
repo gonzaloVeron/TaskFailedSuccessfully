@@ -55,3 +55,8 @@ func _on_TimerCooldown_timeout():
 	shoot()
 	timer_shooting.start()
 	pass # Replace with function body.
+
+
+func _on_TimerFirstShoot_timeout():
+	shoot()
+	pass # Replace with function body.

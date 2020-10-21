@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://obstacles/guns/laser gun/LaserGun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Character/Character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/platforms/automatic/Platform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/hook/Hook.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/exit/Exit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://obstacles/spikes/bigger spikes/bigger spike trap/EvenBiggerSpikeTrap.tscn" type="PackedScene" id=7]
+
+[node name="Level3" type="Node2D"]
+
+[node name="Character" parent="." instance=ExtResource( 2 )]
+position = Vector2( -2112, 112 )
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( -1928, 120 )
+
+[node name="TrapSpikes" type="Node2D" parent="."]
+
+[node name="EvenBiggerSpikeTrap" parent="TrapSpikes" instance=ExtResource( 7 )]
+position = Vector2( -2320, 352 )
+
+[node name="EvenBiggerSpikeTrap2" parent="TrapSpikes" instance=ExtResource( 7 )]
+position = Vector2( -1520, 352 )
+
+[node name="Lasers" type="Node2D" parent="."]
+
+[node name="LaserGun" parent="Lasers" instance=ExtResource( 1 )]
+position = Vector2( -1848, -160 )
+rotation = 1.5708
+
+[node name="Hooks" type="Node2D" parent="."]
+
+[node name="Hook" parent="Hooks" instance=ExtResource( 5 )]
+
+[node name="TileMap" parent="." instance=ExtResource( 3 )]
+tile_data = PoolIntArray( -1048664, 17, 0, -1048663, 17, 0, -1048662, 17, 0, -1048661, 17, 0, -1048660, 17, 0, -1048659, 17, 0, -1048658, 17, 0, -1048657, 17, 0, -1048656, 17, 0, -1048655, 17, 0, -1048654, 17, 0, -1048653, 17, 0, -1048652, 17, 0, -1048651, 17, 0, -1048650, 17, 0, -1048649, 17, 0, -1048648, 17, 0, -1048647, 17, 0, -1048646, 17, 0, -1048645, 17, 0, -1048644, 17, 0, -1048643, 17, 0, -1048642, 17, 0, -1048641, 17, 0, -1048640, 17, 0, -1048639, 17, 0, -1048638, 17, 0, -1048637, 17, 0, -1048636, 17, 0, -1048635, 17, 0, -1048634, 17, 0, -1048633, 17, 0, -1048632, 17, 0, -983128, 39, 0, -983127, 14, 0, -983126, 14, 0, -983125, 14, 0, -983124, 2, 0, -983123, 14, 0, -983122, 2, 0, -983121, 14, 0, -983120, 14, 0, -983119, 2, 0, -983118, 2, 0, -983117, 14, 0, -983116, 14, 0, -983115, 14, 0, -983114, 2, 0, -983113, 14, 0, -983112, 14, 0, -983111, 14, 0, -983110, 1, 0, -983109, 14, 0, -983108, 14, 0, -983107, 14, 0, -983106, 3, 0, -983105, 3, 0, -983104, 3, 0, -983103, 14, 0, -983102, 3, 0, -983101, 3, 0, -983100, 3, 0, -983099, 3, 0, -983098, 3, 0, -983097, 3, 0, -983096, 3, 0, -917592, 37, 0, -852056, 37, 0, -786520, 37, 0, -720984, 37, 0, -655448, 37, 0, -589912, 37, 0, -524376, 37, 0, -458840, 37, 0, -393304, 37, 0, -327768, 37, 0, -262232, 37, 0, -262227, 35, 0, -262226, 20, 0, -262225, 35, 0, -196696, 37, 0, -196690, 25, 0, -131160, 37, 0, -131154, 25, 0, -65624, 37, 0, -65618, 25, 0, -88, 37, 0, -82, 25, 0, 65448, 37, 0, 65454, 25, 0, 130984, 37, 0, 130990, 25, 0 )
+
+[node name="Exit" parent="." instance=ExtResource( 6 )]
