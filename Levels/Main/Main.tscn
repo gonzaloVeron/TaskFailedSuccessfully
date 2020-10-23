@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Music/Beavis and Butt-head (GENESIS) Music - Stage Sewage (48kbit_Opus)-[AudioTrimmer.com].wav" type="AudioStream" id=1]
+[ext_resource path="res://Levels/Level_3/Level3.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Level_1/Level1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/Level_2/Level2.tscn" type="PackedScene" id=4]
+
+
+[node name="Main" type="Node"]
+
+[node name="Level1" parent="." instance=ExtResource( 3 )]
+next_scene = ExtResource( 4 )
+current_scene = ExtResource( 3 )
+
+[node name="Level2" parent="." instance=ExtResource( 4 )]
+
+[node name="Level3" parent="." instance=ExtResource( 2 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )

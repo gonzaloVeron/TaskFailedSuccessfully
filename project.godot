@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Laser"
-run/main_scene="res://Character/DEMO/CharacterDEMO.tscn"
+run/main_scene="res://Levels/Main Menu/Main Menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+MusicController="*res://GlobalNodes/MusicController.tscn"
 
 [input]
 

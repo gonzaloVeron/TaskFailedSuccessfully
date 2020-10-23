@@ -19,7 +19,6 @@ func teleport():
 	#yield(anim_player,"animation_finished")
 	yield(get_tree().create_timer(1.0), "timeout")
 	#anim_player.play("animation_finished")
-	print("asdasdasd")
 	get_tree().change_scene_to(next_scene)
 	
 
