@@ -3,9 +3,12 @@ extends KinematicBody2D
 # It can move, collide with the world, etc...
 # The player has a state machine, but the body and the state machine are separate.
 
+
+onready var timer:=$LevelTimer
 onready var raycast2d:= $RayCast2DLighting
 onready var aim:= $Line2DAim
 onready var body:= $BodyPivot
+
 var default_aim_color = null
 
 signal direction_changed(new_direction)
@@ -15,10 +18,13 @@ signal die(pos)
 var look_direction = Vector2.RIGHT setget set_look_direction
 
 func _ready():
+	
 #	$Character_State_Machine/Jump.coll = $CollisionShape2D
 #	$Character_State_Machine/Move.coll = $CollisionShape2D
 	default_aim_color = aim.get_default_color()
 	
+func set_timer(seconds):
+	timer.value = seconds
 
 func _process(delta):
 	
@@ -30,8 +36,8 @@ func _physics_process(delta):
 		aim.set_point_position(1, transform.xform_inv(raycast2d.get_collision_point()))
 		if raycast2d.get_collider().is_in_group("hook"):
 			aim.set_default_color(ColorN("darkturquoise",1))
-		if raycast2d.get_collider().is_in_group("switch"):
-			aim.set_default_color(ColorN("red",1))
+		#if raycast2d.get_collider().is_in_group("switch"):
+		#	aim.set_default_color(ColorN("red",1))
 		else:
 			aim.set_default_color(default_aim_color)
 		

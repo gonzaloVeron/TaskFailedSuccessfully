@@ -10,13 +10,17 @@ onready var timer_shooting := $TimerShooting
 
 
 export var speed:= 50000
+var is_shooting = false
 
 func _physics_process(delta):
 	check_for_hits()
+	if is_shooting and raycast2d.is_colliding():
+		make_beam()
+	
 	
 func shoot():
-	if raycast2d.is_colliding():
-		make_beam()
+	is_shooting = true
+	
 		
 		#aca se puede agregar efectos visuales como particulas o etc. 
 	pass
@@ -25,7 +29,7 @@ func make_beam():
 	line2d.points[1] = transform.xform_inv(raycast2d.get_collision_point())
 
 func check_for_hits():
-	if raycast2d.get_collider().is_in_group("player") and line2d.points[1] != line2d.points[0]:
+	if raycast2d.is_colliding() and raycast2d.get_collider().is_in_group("player") and raycast2d.get_collider() != null and line2d.points[1] != line2d.points[0]:
 		raycast2d.get_collider().die()
 
 func _ready():
@@ -35,7 +39,7 @@ func _ready():
 	shoot()
 	timer_shooting.set_wait_time(time_shooting)
 	timer_cooldown.set_wait_time(time_cooldown)
-	
+	#raycast2d.add_exception()
 	timer_shooting.start()
 	pass 
 
@@ -43,8 +47,8 @@ func _ready():
 func _on_TimerShooting_timeout():
 	#line2d.set_process(false)
 	#line2d.set_physics_process(false)
-	print("aca deberia borrarse el line2d")
 	line2d.points[1] = line2d.points[0]
+	is_shooting = false
 	timer_cooldown.start()
 	pass # Replace with function body.
 
