@@ -20,7 +20,7 @@ extents = Vector2( 1404.04, 27.6914 )
 [node name="CharacterDEMO" type="Node2D"]
 
 [node name="Exit" parent="." instance=ExtResource( 2 )]
-position = Vector2( 156.49, 499.698 )
+position = Vector2( -310.982, 357.359 )
 
 [node name="Hook" parent="." instance=ExtResource( 1 )]
 position = Vector2( 515.825, 313.929 )

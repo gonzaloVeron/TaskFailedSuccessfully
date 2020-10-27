@@ -20,9 +20,6 @@ func update(_delta):
 	var input_direction = get_input_direction()
 	if not input_direction:
 		emit_signal("finished", "idle")
-	#if not owner.is_on_floor():
-		#emit_signal("finished", "jump")
-		#print(owner.is_on_floor())
 
 	speed = max_walk_speed
 
