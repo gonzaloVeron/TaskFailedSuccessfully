@@ -9,6 +9,8 @@
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
 margin_right = 3763.0
 margin_bottom = 791.0
+rect_scale = Vector2( 1.5, 1.5 )
+mouse_filter = 2
 texture = ExtResource( 1 )
 stretch_mode = 2
 __meta__ = {

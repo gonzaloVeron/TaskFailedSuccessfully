@@ -15,6 +15,7 @@ laser_size = 20
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2( 28, -6 )
 rotation = 4.71239
+scale = Vector2( 5, 1 )
 enabled = true
 cast_to = Vector2( 0, 1500 )
 collide_with_areas = true
