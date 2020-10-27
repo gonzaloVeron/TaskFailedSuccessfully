@@ -3,10 +3,12 @@ extends Node2D
 export var time_shooting: = 0.0
 export var time_cooldown: = 0.0
 export var laser_size: = 0 
+export var raycast_size := 3
 onready var raycast2d := $RayCast2D
 onready var line2d := $Line2D
 onready var timer_cooldown := $TimerCooldown
 onready var timer_shooting := $TimerShooting
+
 
 
 export var speed:= 50000
@@ -25,6 +27,10 @@ func shoot():
 		#aca se puede agregar efectos visuales como particulas o etc. 
 	pass
 
+func set_laser_raycast_width_size(aSize):
+	$RayCast2D.scale.x = aSize
+	$RayCast2D.scale.y = aSize
+
 func make_beam():
 	line2d.points[1] = transform.xform_inv(raycast2d.get_collision_point())
 
@@ -41,6 +47,7 @@ func _ready():
 	timer_cooldown.set_wait_time(time_cooldown)
 	#raycast2d.add_exception()
 	timer_shooting.start()
+	set_laser_raycast_width_size(raycast_size)
 	pass 
 
 
