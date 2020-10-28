@@ -37,7 +37,7 @@ func enter():
 
 func update(delta):
 	if owner.is_on_wall():
-		emit_signal("finished", "previous")
+		emit_signal("finished", "idle")
 
 	var input_direction = get_input_direction()
 

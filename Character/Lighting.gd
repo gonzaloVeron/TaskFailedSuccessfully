@@ -1,5 +1,7 @@
 extends "res://Character/Motion.gd"
 
+signal saliDeAcaLoco()
+
 var speed:float
 var velocity:Vector2
 var direction:Vector2
@@ -22,13 +24,15 @@ var horizontal_velocity = Vector2()
 var vertical_speed = 0.0
 var height = 0.0
 
-func initialize(direction, speed, velocity):
+var hookPosition:Vector2
+
+func initialize(direction, speed, velocity, hookPosition):
 	self.direction = direction
 	horizontal_speed = speed
 	max_horizontal_speed = speed if speed > 0.0 else base_max_horizontal_speed
 	enter_velocity = velocity
-
-# Clean up the state. Reinitialize values like a timer.
+	self.hookPosition = hookPosition
+	
 func exit():
 	pass
 
@@ -41,13 +45,24 @@ func enter():
 
 func update(delta):
 	
-	if owner.is_on_wall():
-		emit_signal("finished", "idle")
+	var distanciaEntrePersonajeYHook = owner.body.get_global_position() - self.hookPosition
+	var distancia2 = Vector2(abs(distanciaEntrePersonajeYHook.x), abs(distanciaEntrePersonajeYHook.y))
+	var bol = distancia2.x < 20 and distancia2.y < 20
+	
+	
+	if bol:
+		owner.itimer.start()
 
-	var input_direction = get_input_direction()
+	print(bol)
+	print(distancia2)
+	speed = 1500
+	velocity = self.direction * speed
+	velocity.y += gravity * delta
+	velocity = owner.move_and_slide(velocity)
 
-	move_horizontally(delta, self.direction)
-	jump_height(delta)
+
+#	move_horizontally(delta, input_direction)
+#	jump_height(delta)
 
 func move_horizontally(delta, direction):
 	if direction:
@@ -69,3 +84,6 @@ func jump_height(delta):
 	velocity = Vector2(0, min(500, vertical_speed * -1))
 		
 	owner.move_and_slide(velocity)
+
+func _on_Timer_timeout():
+	emit_signal("finished", "jump")

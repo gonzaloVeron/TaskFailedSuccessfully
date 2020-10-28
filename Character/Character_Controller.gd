@@ -9,6 +9,7 @@ onready var raycast2d:= $RayCast2DLighting
 onready var aim:= $Line2DAim
 onready var body:= $BodyPivot
 onready var csm:= $Character_State_Machine
+onready var itimer:= $ImpulseTimer
 
 var default_aim_color = null
 
@@ -60,11 +61,9 @@ func set_look_direction(value):
 func shoot_lighting():
 	#animacion aca (?
 	if raycast2d.is_colliding() and raycast2d.get_collider().is_in_group("hook"): 
-		#var attraction_speed = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
 		var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
-		#self.set_global_position(raycast2d.get_collider().get_global_position())
-		#self.move_and_slide(attraction_speed * 15000)
-		csm.changeToLighting(attraction_direction)
+		var hookPosition = raycast2d.get_collider().get_global_position()
+		csm.changeToLighting(attraction_direction, hookPosition)
 	if raycast2d.is_colliding() and raycast2d.get_collider().is_in_group("switch"): 
 		raycast2d.get_collider().activate()
 	pass
