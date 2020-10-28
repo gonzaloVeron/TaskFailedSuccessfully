@@ -11,7 +11,6 @@ func _ready():
 	
 	for state in states_map.values():
 		state.owner = owner
-	
 
 func _change_state(state_name):
 	print(state_name)
@@ -39,3 +38,7 @@ func _unhandled_input(event):
 		print ("asdasdasdasdasdasd")
 		current_state.owner.shoot_lighting()
 	current_state.handle_input(event)
+
+func changeToLighting(attraction_direction, hookPosition):
+	$Lighting.initialize(attraction_direction, $Move.speed, $Move.velocity, hookPosition)
+	._change_state("lighting")

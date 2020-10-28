@@ -36,18 +36,15 @@ func enter():
 	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite")
 
 func update(delta):
+	if owner.is_on_wall():
+		emit_signal("finished", "idle")
+
 	var input_direction = get_input_direction()
 
 	move_horizontally(delta, input_direction)
 	jump_height(delta)
 
 	animated.play("jump")
-	#animated.flip_h = false
-	
-	print(owner.is_on_wall())
-	if owner.is_on_wall():
-		emit_signal("finished", "previous")
-
 
 func move_horizontally(delta, direction):
 	if direction:
