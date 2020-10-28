@@ -2,10 +2,10 @@ extends Label
 
 signal timeOutRestart()
 
-var time = 5.0
+var time = 2.0
 
 func _ready():
-	time = 5.0
+	time = 2.0
 
 func _process(delta):
 	time = max(1.0, time - delta)

@@ -35,6 +35,7 @@ func _unhandled_input(event):
 #		return
 	## el lighting deberia interrumpir estados
 	if Input.is_action_just_pressed("lighting"):
+		print ("asdasdasdasdasdasd")
 		current_state.owner.shoot_lighting()
 	current_state.handle_input(event)
 

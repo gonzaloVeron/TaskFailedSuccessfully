@@ -60,6 +60,7 @@ func set_look_direction(value):
 
 func shoot_lighting():
 	#animacion aca (?
+	
 	if raycast2d.is_colliding() and raycast2d.get_collider().is_in_group("hook"): 
 		var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
 		var hookPosition = raycast2d.get_collider().get_global_position()
