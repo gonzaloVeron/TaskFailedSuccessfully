@@ -12,6 +12,5 @@ func _process(delta):
 	text = str(int(round(time)))
 
 func _on_Timer_timeout():
-	print("dos veces?")
 	emit_signal("timeOutRestart")
 	get_parent().queue_free()

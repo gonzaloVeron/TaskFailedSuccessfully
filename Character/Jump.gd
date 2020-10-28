@@ -7,7 +7,7 @@ export(float) var air_acceleration = 1000.0
 export(float) var air_deceleration = 2000.0
 export(float) var air_steering_power = 50.0
 
-export(float) var gravity = 1600.0
+export(float) var gravity = 1400.0
 
 var enter_velocity = Vector2()
 
@@ -61,7 +61,6 @@ func move_horizontally(delta, direction):
 
 func jump_height(delta):
 	vertical_speed -= gravity * delta
-	
 	#parche para evitar que caiga rapido
 	velocity = Vector2(0, min(500, vertical_speed * -1))
 		

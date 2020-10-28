@@ -1,17 +1,13 @@
 extends Area2D
 
-#var next_level_scene_path : String = ""
 export var next_scene : PackedScene
 
 onready var anim_player : AnimationPlayer = $AnimationPlayer
 onready var animatedSprite : AnimatedSprite = $AnimatedSprite
+var already_entered = false
 
-
-#func set_next_level_scene_path (scene_path):
-#	next_level_scene_path = scene_path
 
 func _ready():
-	#$AnimationPlayer.play("default")
 	animatedSprite.play("default")
 	pass 
 
@@ -19,16 +15,17 @@ func teleport():
 	if isLastLevel():
 		get_tree().change_scene("res://Levels/Animation Win/AnimationWin.tscn")
 	else:
+		already_entered = true
 		anim_player.play("fade_in")
-		yield(get_tree().create_timer(1.0), "timeout")
-		get_tree().change_scene_to(next_scene)
-	
+		$Timer.start()
 
 func _on_Exit_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and !already_entered:
 		teleport()
-		#print("se deberia producir el cambio de nivel")
-		#get_tree().change_scene(next_level_scene_path)
 		
 func isLastLevel():
 	return get_parent().get_name() == "Level3"
+
+func _on_Timer_timeout():
+	get_tree().change_scene_to(next_scene)
+

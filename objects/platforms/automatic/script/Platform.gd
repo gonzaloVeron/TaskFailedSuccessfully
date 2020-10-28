@@ -9,7 +9,6 @@ var origin = Vector2(0,0)
 func _ready():
 	time_init = 0.0
 	origin = position
-# Called when the node enters the scene tree for the first time.
 
 func _physics_process(delta):
 	time_init = time_init + delta
