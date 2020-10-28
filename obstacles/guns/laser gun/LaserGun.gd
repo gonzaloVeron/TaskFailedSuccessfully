@@ -1,7 +1,7 @@
 extends Node2D
 
-export var time_shooting: = 0.0
-export var time_cooldown: = 0.0
+export var time_shooting: = 1.0
+export var time_cooldown: = 1.0
 export var laser_size: = 0 
 export var raycast_size := 3
 onready var raycast2d := $RayCast2D
@@ -22,8 +22,6 @@ func _physics_process(delta):
 	
 func shoot():
 	is_shooting = true
-	
-		
 		#aca se puede agregar efectos visuales como particulas o etc. 
 	pass
 
@@ -39,35 +37,33 @@ func check_for_hits():
 		raycast2d.get_collider().die()
 
 func _ready():
+	#configurar el audio. en un volumen tan negativo no se escucha
+	$AudioStreamPlayer2D.set_volume_db(-200000)
 	line2d.width = laser_size
 	line2d.points[0] = $BeamStart.position
 	line2d.points[1] = $BeamStart.position
 	shoot()
+	
 	timer_shooting.set_wait_time(time_shooting)
 	timer_cooldown.set_wait_time(time_cooldown)
-	#raycast2d.add_exception()
 	timer_shooting.start()
 	set_laser_raycast_width_size(raycast_size)
 	pass 
 
 
 func _on_TimerShooting_timeout():
-	#line2d.set_process(false)
-	#line2d.set_physics_process(false)
 	line2d.points[1] = line2d.points[0]
 	is_shooting = false
 	timer_cooldown.start()
-	pass # Replace with function body.
-
+	$AudioStreamPlayer2D.stop()
+	
 
 func _on_TimerCooldown_timeout():
-	#line2d.set_process(true)
-	#line2d.set_physics_process(true)
 	shoot()
+	$AudioStreamPlayer2D.play()
 	timer_shooting.start()
-	pass # Replace with function body.
 
 
 func _on_TimerFirstShoot_timeout():
 	shoot()
-	pass # Replace with function body.
+	$AudioStreamPlayer2D.play()

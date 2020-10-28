@@ -61,7 +61,6 @@ func move_horizontally(delta, direction):
 
 func jump_height(delta):
 	vertical_speed -= gravity * delta
-	
 	#parche para evitar que caiga rapido
 	velocity = Vector2(0, min(500, vertical_speed * -1))
 		

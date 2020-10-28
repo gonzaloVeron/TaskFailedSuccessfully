@@ -49,23 +49,19 @@ func update(delta):
 	var distanciaEntrePersonajeYHook = owner.body.get_global_position() - self.hookPosition
 	var distancia2 = Vector2(abs(distanciaEntrePersonajeYHook.x), abs(distanciaEntrePersonajeYHook.y))
 	var bol = distancia2.x < 35 and distancia2.y < 35
-	
-	
 	if bol:
 		owner.itimer.start()
 
-	print(bol)
-	print(distancia2)
 	speed = 1500
 	velocity = self.direction * speed
 	velocity.y += gravity * delta
+	#screen shake
+	#shake(duration, frequency, amplitude)
+	owner.get_node("Camera2D").shake(0.02, 100, 2)
 	velocity = owner.move_and_slide(velocity)
 	line2d.width = 10
 	line2d.visible = true
 
-
-#	move_horizontally(delta, input_direction)
-#	jump_height(delta)
 
 func move_horizontally(delta, direction):
 	if direction:
@@ -91,4 +87,5 @@ func jump_height(delta):
 func _on_Timer_timeout():
 	line2d.width = 4
 	line2d.visible = false
+	owner.hitted_hook = false
 	emit_signal("finished", "move") #jump

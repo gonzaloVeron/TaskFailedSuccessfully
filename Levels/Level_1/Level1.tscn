@@ -79,7 +79,7 @@ position = Vector2( -2456, 400 )
 position = Vector2( -3363, 51 )
 
 [node name="Hook2" parent="Hooks" instance=ExtResource( 4 )]
-position = Vector2( -2514, 27 )
+position = Vector2( -2533, 22 )
 
 [node name="Hook3" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( -1854, 126 )

@@ -13,16 +13,10 @@ func update(_delta):
 	var input_direction = get_input_direction()
 	if input_direction:
 		emit_signal("finished", "move")
-	
-	
-	#height = max(0.0, height)
 	velocity.y += gravity * _delta
-	
 	#parche para evitar que caiga rapido
 	velocity.y = min(500.0, velocity.y * gravity * _delta)
-
 	velocity = owner.move_and_slide(velocity, Vector2(0, -1), 5, 2)
-	
 	animated.play("idle")
 
 func isOnFloor():

@@ -1,7 +1,6 @@
 extends Node2D
 
 func _ready():
-	#var arrow = get_node("SpriteCrosshair").texture
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 func _physics_process(delta):

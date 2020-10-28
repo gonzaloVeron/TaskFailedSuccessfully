@@ -10,7 +10,6 @@ func enter():
 	speed = 0.0
 	velocity = Vector2()
 	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite")
-
 	var input_direction = get_input_direction()
 
 func handle_input(event):
@@ -27,7 +26,6 @@ func update(_delta):
 	velocity.y += gravity * _delta
 
 	velocity = owner.move_and_slide(velocity, Vector2(0, -1), 5, 2)
-	
 	
 	if input_direction.x > 0:
 		animated.play("walk")
