@@ -10,6 +10,13 @@ extends Area2D
 func _ready():
 	pass # Replace with function body.
 
+func glow_on():
+	$Light2D.set_process(true)
+	$Light2D.visible = true
+	
+func glow_off():
+	$Light2D.visible = false
+	$Light2D.set_process(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

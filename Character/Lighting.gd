@@ -5,6 +5,7 @@ signal saliDeAcaLoco()
 var speed:float
 var velocity:Vector2
 var direction:Vector2
+onready var line2d: Line2D = get_parent().get_parent().get_node("Line2DAim")
 
 export(float) var base_max_horizontal_speed = 400.0
 
@@ -47,7 +48,7 @@ func update(delta):
 	
 	var distanciaEntrePersonajeYHook = owner.body.get_global_position() - self.hookPosition
 	var distancia2 = Vector2(abs(distanciaEntrePersonajeYHook.x), abs(distanciaEntrePersonajeYHook.y))
-	var bol = distancia2.x < 20 and distancia2.y < 20
+	var bol = distancia2.x < 35 and distancia2.y < 35
 	
 	
 	if bol:
@@ -59,6 +60,8 @@ func update(delta):
 	velocity = self.direction * speed
 	velocity.y += gravity * delta
 	velocity = owner.move_and_slide(velocity)
+	line2d.width = 10
+	line2d.visible = true
 
 
 #	move_horizontally(delta, input_direction)
@@ -86,4 +89,6 @@ func jump_height(delta):
 	owner.move_and_slide(velocity)
 
 func _on_Timer_timeout():
-	emit_signal("finished", "jump")
+	line2d.width = 4
+	line2d.visible = false
+	emit_signal("finished", "move") #jump

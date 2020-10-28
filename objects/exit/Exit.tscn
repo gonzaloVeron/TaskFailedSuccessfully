@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://objects/exit/Exit.gd" type="Script" id=1]
 [ext_resource path="res://objects/exit/portal sin sombras ni bg.png" type="Texture" id=2]
@@ -103,6 +103,11 @@ animations = [ {
 "speed": 6.0
 } ]
 
+[sub_resource type="Environment" id=9]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 0
+
 [node name="Exit" type="Area2D"]
 monitorable = false
 collision_layer = 0
@@ -133,8 +138,12 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 1.1, 1.2, 1.6, 1 )
 scale = Vector2( 0.3, 0.2 )
 frames = SubResource( 8 )
-frame = 1
+frame = 3
 playing = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 9 )
 [connection signal="body_entered" from="." to="." method="_on_Exit_body_entered"]

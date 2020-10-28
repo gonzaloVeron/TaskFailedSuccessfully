@@ -20,7 +20,7 @@ signal die(pos)
 var look_direction = Vector2.RIGHT setget set_look_direction
 
 func _ready():
-	
+	aim.visible = false
 #	$Character_State_Machine/Jump.coll = $CollisionShape2D
 #	$Character_State_Machine/Move.coll = $CollisionShape2D
 	default_aim_color = aim.get_default_color()
@@ -34,6 +34,7 @@ func _process(delta):
 	aim.points[0] = body.position
 	
 func _physics_process(delta):
+	
 	if raycast2d.is_colliding():
 		aim.set_point_position(1, transform.xform_inv(raycast2d.get_collision_point()))
 		if raycast2d.get_collider().is_in_group("hook"):
@@ -59,15 +60,21 @@ func set_look_direction(value):
 	emit_signal("direction_changed", value)
 
 func shoot_lighting():
+	missed_shoot_start()
 	#animacion aca (?
-	
 	if raycast2d.is_colliding() and raycast2d.get_collider().is_in_group("hook"): 
 		var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
 		var hookPosition = raycast2d.get_collider().get_global_position()
 		csm.changeToLighting(attraction_direction, hookPosition)
+		
 	if raycast2d.is_colliding() and raycast2d.get_collider().is_in_group("switch"): 
 		raycast2d.get_collider().activate()
+	#
 	pass
+
+func missed_shoot_start():
+	aim.visible = true
+	$ShootTimer.start()
 
 func die():
 	$Camera2D.clear_current()
@@ -76,3 +83,9 @@ func die():
 
 func _on_LevelTimer_timeOut():
 	die()
+
+
+func _on_ShootTimer_timeout():
+	print("deberia terminar")
+	aim.visible = false
+	pass # Replace with function body.
